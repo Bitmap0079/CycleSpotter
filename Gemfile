@@ -64,3 +64,5 @@ gem 'html2slim'
 gem 'bootstrap'
 #ActiveModelのhas_secure_passwordを使うためのgem
 gem 'bcrypt', '~> 3.1.7'
+#ログの詳細表示
+gem 'rails_12factor', group: :production
