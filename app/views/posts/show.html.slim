@@ -1,0 +1,24 @@
+h1 スポット詳細
+.nav.justify-content-end
+  = link_to '一覧', posts_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Post.human_attribute_name(:id)
+      td= @post.id
+    tr
+      th= Post.human_attribute_name(:name)
+      td= @post.name
+    tr
+      th= Post.human_attribute_name(:content)
+      td= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Post.human_attribute_name(:created_at)
+      td= @post.created_at
+    tr
+      th= Post.human_attribute_name(:updated_at)
+      td= @post.updated_at
+
+= link_to '編集', edit_post_path, class: 'btn btn-success mr-3'
+= link_to '削除', @post, method: :delete, data: { confirm: "投稿「#{@post.name}]を削除しますか？" }, class: 'btn btn-danger'
+/method: :deleteはデリートで返すため

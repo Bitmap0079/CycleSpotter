@@ -1,0 +1,13 @@
+- if post.errors.present?#エラーが存在しているかどうか
+  ul#error_explanation
+    - @post.errors.full_messages.each do |message|
+      li = message
+/インデントに注意しないときちんと反映されない
+= form_with model: @post, local: true do |f|
+  .form-group
+    = f.label :タイトル
+    = f.text_field :name, class: 'form-control', id: 'post_name'
+  .form-group
+    = f.label :投稿内容
+    = f.text_area :content, rows: 5, class: 'form-control', id: 'post_content'
+  = f.submit nil, class: 'btn btn-success'

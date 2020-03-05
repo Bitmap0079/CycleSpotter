@@ -1,0 +1,8 @@
+h1 編集画面
+
+.nav.justify-content-end
+  = link_to '一覧', posts_path, class: 'nav-link'
+  /renderはパーシャルの'_form'を呼び出すため
+  /locals: { post: @post }は_formに
+  /インスタンス変数@postを利用しなくてもpostで利用できるようにした
+  = render partial: 'form', locals: { post: @post }
