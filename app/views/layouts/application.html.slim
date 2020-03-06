@@ -13,6 +13,15 @@ html
   body
   .app-title.navbar.navbar-expand-md.navbar-light.bg-light
     .navbar-brand CycleSpotter
+
+    u1.navbar-nav.m1-auto
+      - if current_user
+        li.nav-item= link_to '投稿一覧', posts_path, class: 'nav-link'
+        li.nav-item= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+        li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+      /メソッドdeleteはブラウザがgetではなくdeleteを受け取るようにするための処理
+      - else
+        li.nav-item= link_to 'ログインはこちら', login_path, class: 'nav-link'
   .container
     / フラッシュメッセージが存在していればアラート属性でメッセージを表示
     -if flash.notice.present?
