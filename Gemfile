@@ -66,3 +66,5 @@ gem 'bootstrap'
 gem 'bcrypt', '~> 3.1.7'
 #ログの詳細表示
 gem 'rails_12factor', group: :production
+#URLの直リンク自動生成
+gem 'rails_autolink'
