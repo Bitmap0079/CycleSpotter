@@ -4,8 +4,8 @@ h1 スポット詳細
 table.table.table-hover
   tbody
     tr
-      th= Post.human_attribute_name(:id)
-      td= @post.id
+      th= User.human_attribute_name(:name)
+      td= @user.name
     tr
       th= Post.human_attribute_name(:name)
       td= @post.name
@@ -18,7 +18,7 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:updated_at)
       td= @post.updated_at
-
-= link_to '編集', edit_post_path, class: 'btn btn-success mr-3'
-= link_to '削除', @post, method: :delete, data: { confirm: "投稿「#{@post.name}]を削除しますか？" }, class: 'btn btn-danger'
+- if @post.user_id == @current_user.id
+  = link_to '編集', edit_post_path, class: 'btn btn-success mr-3'
+  = link_to '削除', @post, method: :delete, data: { confirm: "投稿「#{@post.name}]を削除しますか？" }, class: 'btn btn-danger'
 /method: :deleteはデリートで返すため

@@ -5,14 +5,16 @@ h1 投稿一覧
 table.table.table-hover
   thead.thead-default
     tr
-      th= Post.human_attribute_name(:ホーム)
+      th= Post.human_attribute_name(:投稿者名)
+      th= Post.human_attribute_name(:スポット一覧)
       th= Post.human_attribute_name(:created_at)
       th
     tbody
-      - @post.each do |post|
+      - @posts.each do |post|
         tr
-          td= link_to post.name, post_path(post)
+          td= link_to post.user.name, admin_users_url
+          td= link_to post.name, post_url(post)
           td= post.created_at
           td
-            = link_to '編集', edit_post_path(@post), class: 'btn btn-success mr-3'
+            / = link_to '編集', edit_post_path(@post), class: 'btn btn-success mr-3'
             = link_to '削除', post, method: :delete, data: { confirm: "投稿「#{post.name}]を削除しますか？" }, class: 'btn btn-danger'

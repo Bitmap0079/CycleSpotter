@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin
-
+  before_action :require_admin, only: [:edit, :update, :destroy]
+  skip_before_action :login_required, only: [:new, :create]
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       redirect_to admin_user_url(@user), notice: "ユーザー「#{@user.name}」を登録しました！"
     else
-      render :new
+      render :new, flash: { error: @user.errors.full_messages }
     end
   end
 
