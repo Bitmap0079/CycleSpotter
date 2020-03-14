@@ -1,3 +1,21 @@
-h1 CycleSpotterはお気に入りの写真とマップの同時表示が可能なブログ型共有アプリケーションです!
-- unless current_user
-  = link_to '新規ユーザー登録', new_admin_user_path, class: 'btn btn-success'
+
+.jumbotron
+  .container
+    - unless current_user
+      h1 CycleSpotterの機能概要
+      h3 ・サイクリングスポットの投稿機能
+      h3 ・写真の投稿機能
+      h3 ・GoogleMapとの連携機能
+    - if current_user
+      = link_to 'さあ、スポットを登録しよう！', new_post_path, class: 'btn btn-success'
+    - unless current_user
+      = link_to '新規ユーザー登録', new_admin_user_path, class: 'btn btn-success'
+    h2 ↓詳しくは画面下へ↓
+.row
+  .container
+    h2 使い方
+    / img src="assets/login.jpg"
+    p ①会員登録完了後、画面上のログインボタンをクリックしてログインしてください。
+    / img src="assets/spot_create.jpg"
+    p ②ログイン完了後、ホームページ中央の緑のボタンをクリックしてください。
+    p ③投稿画面に遷移するので、タイトル、投稿内容、画像の投稿、スポットの登録をしてください。
