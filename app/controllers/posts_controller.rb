@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
     @posts = Post.all.order(created_at: :desc)
   end
 
   def show
-    @post = Post.find_by(params[:id])
     @user = @post.user
   end
 
@@ -47,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
   end
 
 end
